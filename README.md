@@ -60,6 +60,8 @@ To enable direct sending, copy `.env.example` to `.env.local` and set the EmailJ
 
 ## Deployment
 
-The live portfolio is hosted at [sdolle1775.github.io/Portfolio](https://sdolle1775.github.io/Portfolio/).
+The live portfolio is hosted on GitHub Pages at [samdolle.dev](https://samdolle.dev/). The original [sdolle1775.github.io/Portfolio](https://sdolle1775.github.io/Portfolio/) URL redirects to the custom domain.
 
 Every push to `main` builds and deploys `dist/` to GitHub Pages. The workflow can also be run manually from GitHub Actions. Other branches and pull requests only run the build check. Repository Settings → Pages uses **GitHub Actions** as its publishing source.
+
+The custom domain is configured in GitHub Pages settings. Porkbun DNS uses an apex `ALIAS` and a `www` `CNAME`, both pointing to `sdolle1775.github.io`. Keep the `_github-pages-challenge-sdolle1775` TXT record to preserve GitHub's domain ownership verification. The Actions deployment does not require a `CNAME` file in the repository.
