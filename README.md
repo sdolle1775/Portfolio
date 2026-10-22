@@ -27,27 +27,29 @@ npm run dev
 
 Edit `src/content.js` to update the introduction, contact links, skills, and projects:
 
-1. Marvel Champions Digital — community build; live demo pending
+1. Marvel Champions Digital — community build with a Windows download link to GitHub Releases
 2. Netflix Clone
 3. Summarist
 4. NFT Marketplace
 5. Skinstric
 
-The Marvel image comes from the project's repository documentation. The other four images are screenshots of the actual live projects. Marvel's description credits the original Irefrixs project, Summarist's account/subscription flows are described as a demo, NFT Marketplace credits the supplied Ultraverse design and Frontend Simplified course, and Skinstric's results are described as simulated.
+The Marvel image comes from the project's repository documentation. The other four images are screenshots of the actual live projects; Netflix uses Sam's supplied homepage screenshot. Marvel's description credits the original Irefrixs project, Summarist's account/subscription flows are described as a demo, NFT Marketplace credits the supplied Ultraverse design and Frontend Simplified course, and Skinstric's results are described as simulated.
+
+Marvel's featured statistics were verified on October 22, 2026: 29 GitHub stars and 644 cumulative Windows ZIP downloads, excluding artwork and checksum assets. The site uses the conservative “600+ Windows downloads” label; this counts downloads, not unique players.
 
 The original starter assets remain in Git for reference. Its sample resume and placeholder project links are not displayed. Set `profile.resume` to a real resume URL to enable the resume link.
 
 ## Contact
 
-Without EmailJS configuration, the validated contact form opens the visitor's email application with a draft to `sam_dolle@outlook.com`. The site explicitly labels this action and does not claim the draft was sent.
+Without EmailJS configuration, the validated contact form's **Compose email** button opens the visitor's email application with a draft to `sam_dolle@outlook.com`. A direct email link is available beneath the button. The site does not claim the draft was sent.
 
 To enable direct sending, copy `.env.example` to `.env.local` and set the EmailJS service ID, template ID, and public key. Configure the template recipient in EmailJS and use the form variables `user_name`, `user_email`, and `message`. These are public browser integration identifiers; do not put email account passwords or private service credentials in Vite environment variables.
 
 ## Interaction and accessibility
 
 - Staggered hero entrance, original frontend artwork with a slide-in entrance, gentle floating, pointer-responsive tilt, hover lift, and scroll indicator
-- Project zoom/blur/overlay transitions with mouse and keyboard access
-- Project descriptions always visible on phone and touch layouts
+- Full-colour project screenshots in window frames, with alternating image/text columns on desktop
+- Project descriptions, technology lists, and links always visible; stacked layouts on tablets and phones
 - Light/dark preference saved in local storage
 - Focus-trapped, keyboard-dismissible Bootstrap dialog and mobile navigation
 - Form labels, input validation, status announcements, and honest email-draft fallback

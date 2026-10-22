@@ -111,9 +111,9 @@ function ContactForm() {
       <Form.Control.Feedback type="invalid">Please add a message.</Form.Control.Feedback>
     </Form.Group>
     <Button type="submit" className="send-button tw:w-full" disabled={status === 'sending'}>
-      {status === 'sending' ? <><Spinner size="sm" className="tw:mr-2" />Sending…</> : <>{canSend ? 'Send it my way' : 'Open in email app'} <Icon name="arrow-up-right" /></>}
+      {status === 'sending' ? <><Spinner size="sm" className="tw:mr-2" />Sending…</> : <>{canSend ? 'Send it my way' : 'Compose email'} <Icon name="arrow-up-right" /></>}
     </Button>
-    <p className="form-note tw:mt-3">{canSend ? 'Or email me directly at ' : 'Opens an email draft to '}<a href={`mailto:${profile.email}`}>{profile.email}</a>.</p>
+    <p className="form-note tw:mt-3">{!canSend && <>Opens a draft in your email app.<br /></>}Or email me directly at <a href={`mailto:${profile.email}`}>{profile.email}</a>.</p>
     <div aria-live="polite" aria-atomic="true">
       {status === 'success' && <Alert variant="success">Thanks for your message! I’ll get back to you soon.</Alert>}
       {status === 'draft' && <Alert variant="info">Your email app was requested. Review and send the draft there. If it didn’t open, email me directly using the link above.</Alert>}
@@ -136,8 +136,8 @@ function AboutContact({ section, close }) {
       <section className={`about-panel modal-panel ${active === 'about' ? 'mobile-active' : ''}`} aria-label="About me">
         <span className="eyebrow">A LITTLE INTRODUCTION</span>
         <h3>Here's a bit<br /> about me<span className="accent">.</span></h3>
-        <p className="modal-role">Frontend Software Engineer</p>
-        <p>I'm <strong>{profile.name}</strong>, a frontend software engineer who enjoys turning ideas into responsive, performant web experiences.</p>
+        <p className="modal-role">Frontend Developer</p>
+        <p>I'm <strong>{profile.name}</strong>, a {profile.role} who enjoys turning ideas into responsive, performant web experiences.</p>
         <p>My projects range from movie discovery and book summaries to interactive interfaces and community game development.</p>
         <h4 className="skills-heading">A few tools I work with</h4>
         <Skills />
@@ -154,24 +154,25 @@ function AboutContact({ section, close }) {
 
 function ProjectCard({ project, index }) {
   return <article className="project reveal" aria-labelledby={`title-${project.id}`}>
-    <div className="project-meta tw:flex tw:items-center tw:justify-between tw:gap-4">
-      <span><span className="project-number">0{index + 1}</span>{project.category}</span>
-      <span className="project-type">{project.id === 'marvel' ? 'COMMUNITY BUILD' : 'WEB APPLICATION'}</span>
+    <div className="project-preview">
+      <div className="project-window-bar" aria-hidden="true">
+        <span className="window-dots"><span /><span /><span /></span>
+        <span className="window-label">{project.live ? new URL(project.live).hostname : `${project.name} · Windows`}</span>
+      </div>
+      <img className="project-image" src={project.image} alt={project.imageAlt} loading="lazy" width={project.imageWidth} height={project.imageHeight} />
     </div>
-    <div className="project-wrapper">
-      <img className="project-image" src={project.image} alt={project.imageAlt} loading="lazy" width="1264" height="712" />
-      <div className="project-shade" />
-      <div className="project-description" id={`details-${project.id}`}>
-        <h3 id={`title-${project.id}`}>{project.name}</h3>
-        <p className="project-tech">{project.technologies.join(' · ')}</p>
-        <p className="project-copy">{project.description}</p>
-        <div className="project-links tw:flex tw:flex-wrap tw:items-center tw:gap-5">
-          <a href={project.repository} target="_blank" rel="noreferrer" aria-label={`View ${project.name} source code (opens in a new tab)`}><Icon name="github" /> Source code</a>
-          {project.live ? <a href={project.live} target="_blank" rel="noreferrer" aria-label={`Open ${project.name} live site (opens in a new tab)`}><Icon name="box-arrow-up-right" /> Live site</a> : <span className="pending-demo"><Icon name="clock" /> {project.note}</span>}
-        </div>
+    <div className="project-description" id={`details-${project.id}`}>
+      <p className="project-meta"><span className="project-number">0{index + 1}</span>{project.category}</p>
+      <h3 id={`title-${project.id}`}>{project.name}</h3>
+      <ul className="project-tech" aria-label="Technologies">{project.technologies.map(technology => <li key={technology}>{technology}</li>)}</ul>
+      <p className="project-copy">{project.description}</p>
+      {project.highlight && <p className="project-highlight">{project.highlight}</p>}
+      <div className="project-links tw:flex tw:flex-wrap tw:items-center tw:gap-5">
+        <a href={project.repository} target="_blank" rel="noreferrer" aria-label={`View ${project.name} source code (opens in a new tab)`}><Icon name="github" /> Source code</a>
+        {project.live && <a href={project.live} target="_blank" rel="noreferrer" aria-label={`Open ${project.name} live site (opens in a new tab)`}><Icon name="box-arrow-up-right" /> Live site</a>}
+        {project.download && <a href={project.download} target="_blank" rel="noreferrer" aria-label={`Download ${project.name} for Windows from GitHub Releases (opens in a new tab)`}><Icon name="download" /> Download (Windows)</a>}
       </div>
     </div>
-    <div className="project-caption tw:items-start tw:justify-between tw:gap-4"><span>{project.name}</span><span>{project.technologies.slice(0, 2).join(' / ')}</span></div>
   </article>;
 }
 
