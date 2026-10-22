@@ -1,6 +1,7 @@
 import marvelImage from '../assets/projects/marvel.jpg';
 import netflixImage from '../assets/projects/netflix.jpg';
 import summaristImage from '../assets/projects/summarist.jpg';
+import nftMarketplaceImage from '../assets/projects/nft-marketplace.jpg';
 import skinstricImage from '../assets/projects/skinstric.jpg';
 
 export const profile = {
@@ -60,6 +61,17 @@ export const projects = [
     imageAlt: 'Summarist landing page with its book-summary illustration',
     repository: 'https://github.com/sdolle1775/FESProject_Summarist',
     live: 'https://summarist-opal-ten.vercel.app',
+  },
+  {
+    id: 'nft-marketplace',
+    name: 'NFT Marketplace',
+    category: 'Digital collectibles',
+    technologies: ['React', 'Bootstrap', 'Axios', 'React Router'],
+    description: 'A responsive marketplace frontend with API-driven NFT listings, price sorting, item details, and creator profiles. Built from the supplied Ultraverse design as a Frontend Simplified course project.',
+    image: nftMarketplaceImage,
+    imageAlt: 'NFT Marketplace landing page with the Ultraverse digital collectibles illustration',
+    repository: 'https://github.com/sdolle1775/nft-marketplace',
+    live: 'https://nft-marketplace-mu-seven-15.vercel.app',
   },
   {
     id: 'skinstric',

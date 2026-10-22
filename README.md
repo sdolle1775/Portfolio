@@ -30,9 +30,10 @@ Edit `src/content.js` to update the introduction, contact links, skills, and pro
 1. Marvel Champions Digital — community build; live demo pending
 2. Netflix Clone
 3. Summarist
-4. Skinstric
+4. NFT Marketplace
+5. Skinstric
 
-The Marvel image comes from the project's repository documentation. The other three images are screenshots of the actual live projects. Marvel's description credits the original Irefrixs project, Summarist's account/subscription flows are described as a demo, and Skinstric's results are described as simulated.
+The Marvel image comes from the project's repository documentation. The other four images are screenshots of the actual live projects. Marvel's description credits the original Irefrixs project, Summarist's account/subscription flows are described as a demo, NFT Marketplace credits the supplied Ultraverse design and Frontend Simplified course, and Skinstric's results are described as simulated.
 
 The original starter assets remain in Git for reference. Its sample resume and placeholder project links are not displayed. Set `profile.resume` to a real resume URL to enable the resume link.
 
